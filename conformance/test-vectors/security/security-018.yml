@@ -1,0 +1,24 @@
+id: security-018
+description: Very large summary (1MB) - must be rejected without consuming unbounded resources
+level: 3
+spec_clause: "Section 12.1"
+input_type: generated
+generate:
+  type: oversized_field
+  field: summary
+  size_bytes: 1048576
+base_input:
+  specversion: "1.0"
+  id: "cs_sec_018"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Oversized summary test"
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "summary exceeds maximum length of 2000 characters"
+  max_memory_mb: 100
+  max_time_ms: 5000
+notes: "The runner generates a summary field with 1MB of text. The validator must reject it at the 2000-character limit without consuming excessive memory. Some validators apply length checks early in parsing; this tests that behavior."

@@ -1,0 +1,17 @@
+id: invalid-019
+description: id exceeds 128 character maximum
+level: 1
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "id exceeds maximum length of 128 characters"

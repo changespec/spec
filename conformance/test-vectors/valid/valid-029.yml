@@ -1,0 +1,19 @@
+id: valid-029
+description: Event with action_required set to false explicitly
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_noaction_001"
+  vendor_id: "cloudflare"
+  category: "informational"
+  severity: "low"
+  title: "Cloudflare Workers: new analytics dashboard launched"
+  summary: "Cloudflare launched a redesigned analytics dashboard for Workers. The new dashboard provides more granular request metrics and improved latency percentile views. No changes to the Workers runtime; existing workers continue to function without modification."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.97
+  source_url: "https://blog.cloudflare.com/workers-analytics-2026"
+  action_required: false
+expected:
+  valid: true

@@ -1,0 +1,8 @@
+id: invalid-040
+description: Completely empty JSON object - no fields at all
+level: 1
+spec_clause: "Section 1.1"
+input: {}
+expected:
+  valid: false
+  reason: "Missing all required fields"

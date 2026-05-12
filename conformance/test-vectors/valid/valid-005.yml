@@ -1,0 +1,37 @@
+id: valid-005
+description: Data handling event with extension fields
+level: 1
+spec_clause: "Section 1.2, Section 10"
+input:
+  specversion: "1.0"
+  id: "cs_01HY3KXDPA000001"
+  vendor_id: "twilio"
+  category: "data_handling"
+  severity: "medium"
+  title: "DPA updated: two new subprocessors added for ML model training"
+  summary: "Twilio updated its Data Processing Agreement to add two subprocessors: DataFlow Analytics GmbH (Germany) and Vertex AI Processing LLC (USA). Both are used for training ML models that power Twilio's Flex AI features. If your DPA with Twilio restricts subprocessor additions, you have 30 days to object."
+  published_at: "2026-04-01T12:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.92
+  effective_date: "2026-05-01"
+  source_url: "https://www.twilio.com/en-us/legal/data-protection-addendum"
+  action_required: true
+  recommended_reviewers:
+    - "legal"
+    - "compliance"
+    - "procurement"
+  affected_sections:
+    - "Annex 3 - List of Sub-processors"
+    - "Section 7 - Sub-processing"
+  affected_systems:
+    - "Twilio Flex"
+    - "Flex AI"
+  tags:
+    - "dpa"
+    - "subprocessor"
+    - "gdpr"
+    - "ml-training"
+  "ext:compliance.gdpr_article": "28"
+  "ext:compliance.requires_dpa_review": true
+expected:
+  valid: true

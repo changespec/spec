@@ -1,0 +1,37 @@
+id: valid-026
+description: Event with tags at maximum count (20 tags)
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_maxtags_001"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Event with maximum number of tags"
+  summary: "This event tests that exactly 20 tags are accepted."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  tags:
+    - "tag01"
+    - "tag02"
+    - "tag03"
+    - "tag04"
+    - "tag05"
+    - "tag06"
+    - "tag07"
+    - "tag08"
+    - "tag09"
+    - "tag10"
+    - "tag11"
+    - "tag12"
+    - "tag13"
+    - "tag14"
+    - "tag15"
+    - "tag16"
+    - "tag17"
+    - "tag18"
+    - "tag19"
+    - "tag20"
+expected:
+  valid: true

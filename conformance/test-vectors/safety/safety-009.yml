@@ -1,0 +1,21 @@
+id: safety-009
+description: Client respects the timeout budget and does not hang
+level: 1
+spec_clause: "integration-safety.md Section 2"
+category: safety
+scenario:
+  type: slow_server
+  server_response_delay_ms: 10000   # 10s - well beyond any timeout
+  client_timeout_ms: 2000            # default interactive timeout
+expected:
+  client_exits_nonzero: false
+  elapsed_max_ms: 3500   # 2s timeout + 1.5s overhead
+  elapsed_min_ms: 1900   # must have waited at least near the timeout
+  result_status: degraded
+  stderr_contains: "timeout"
+notes: >
+  The client MUST fire its timeout before the server responds.
+  Total elapsed time MUST be bounded by timeout + reasonable overhead.
+  This tests that the timeout is enforced at the transport layer, not
+  just the application layer (a stalled TCP connection must also time out).
+  The client MUST continue normally after the timeout.

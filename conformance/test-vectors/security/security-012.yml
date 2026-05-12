@@ -1,0 +1,20 @@
+id: security-012
+description: Truncated JSON - missing closing brace
+level: 3
+spec_clause: "Section 12.1"
+input_type: raw_bytes
+raw_input: |
+  {
+    "specversion": "1.0",
+    "id": "cs_sec_012",
+    "vendor_id": "acme",
+    "category": "informational",
+    "severity": "informational",
+    "title": "Truncated JSON",
+    "summary": "This JSON is intentionally truncated",
+    "published_at": "2026-04-10T14:00:00Z"
+expected:
+  valid: false
+  error_type: "json_parse_error"
+  no_crash: true
+notes: "The JSON is syntactically invalid (missing closing brace). Must return a parse error without crashing."

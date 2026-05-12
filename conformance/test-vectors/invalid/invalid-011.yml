@@ -1,0 +1,17 @@
+id: invalid-011
+description: Invalid category value - not in defined enum
+level: 1
+spec_clause: "Section 4"
+input:
+  specversion: "1.0"
+  id: "cs_test_011"
+  vendor_id: "acme"
+  category: "unknown_category"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "Invalid category value: 'unknown_category' is not a defined category"

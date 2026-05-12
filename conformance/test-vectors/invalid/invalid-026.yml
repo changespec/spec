@@ -1,0 +1,25 @@
+id: invalid-026
+description: signature.alg is not ed25519
+level: 1
+spec_clause: "Section 7.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_026"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "publisher_verified"
+  confidence_score: 1.0
+  signature:
+    alg: "rsa256"
+    key_id: "acme-2026-01"
+    value: "MEQCIBnQ3x2R4xVz7kLmP9wYdFqJ1T2uHsG8eNvXcAoBpZkDAiBeKlW5mT3rYhN6pVs4cUq2"
+    signed_fields:
+      - "id"
+      - "vendor_id"
+expected:
+  valid: false
+  reason: "signature.alg must be 'ed25519', no other algorithms are defined in ChangeSpec 1.0"

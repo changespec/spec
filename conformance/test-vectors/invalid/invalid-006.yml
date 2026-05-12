@@ -1,0 +1,16 @@
+id: invalid-006
+description: Missing required field - summary
+level: 1
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_test_006"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "Missing required field: summary"

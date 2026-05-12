@@ -1,0 +1,26 @@
+id: valid-011
+description: Namespaced vendor_id using pypi namespace
+level: 1
+spec_clause: "Section 3.2"
+input:
+  specversion: "1.0"
+  id: "cs_pypi_event_001"
+  vendor_id: "pypi:django"
+  category: "security"
+  severity: "high"
+  title: "CVE-2026-10001: SQL injection via ORM filter() chaining"
+  summary: "Django versions before 4.2.8 are vulnerable to SQL injection through certain ORM filter chaining patterns when using RawSQL with user-supplied input. Upgrade to 4.2.8 or 5.0.2 immediately."
+  published_at: "2026-04-09T16:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.99
+  affected_versions: ">=3.0.0 <4.2.8 || >=5.0.0 <5.0.2"
+  fixed_in_version: "4.2.8"
+  cve_id: "CVE-2026-10001"
+  cvss_score: 8.2
+  cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+  action_required: true
+  recommended_reviewers:
+    - "security"
+    - "engineering"
+expected:
+  valid: true

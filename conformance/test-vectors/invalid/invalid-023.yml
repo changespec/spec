@@ -1,0 +1,18 @@
+id: invalid-023
+description: cve_id in wrong format - missing CVE prefix
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_023"
+  vendor_id: "npm:some-package"
+  category: "security"
+  severity: "high"
+  title: "Security vulnerability"
+  summary: "A security vulnerability was found."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  cve_id: "2025-29999"
+expected:
+  valid: false
+  reason: "cve_id must match pattern CVE-YYYY-NNNNN"

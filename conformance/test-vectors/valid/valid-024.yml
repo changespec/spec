@@ -1,0 +1,26 @@
+id: valid-024
+description: Maven namespaced vendor_id
+level: 1
+spec_clause: "Section 3.2"
+input:
+  specversion: "1.0"
+  id: "cs_maven_001"
+  vendor_id: "maven:org.springframework:spring-core"
+  category: "security"
+  severity: "critical"
+  title: "CVE-2025-12345: Spring Framework remote code execution via SpEL injection"
+  summary: "Spring Framework versions 5.3.0-5.3.38 and 6.0.0-6.0.21 are vulnerable to remote code execution via SpEL injection in the @Value annotation when input is user-controlled. Patch to 5.3.39 or 6.0.22 immediately."
+  published_at: "2026-04-06T18:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.99
+  affected_versions: ">=5.3.0 <5.3.39 || >=6.0.0 <6.0.22"
+  fixed_in_version: "6.0.22"
+  cve_id: "CVE-2025-12345"
+  cvss_score: 9.8
+  cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+  action_required: true
+  recommended_reviewers:
+    - "security"
+    - "engineering"
+expected:
+  valid: true

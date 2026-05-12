@@ -1,0 +1,29 @@
+id: valid-006
+description: Pricing change event
+level: 1
+spec_clause: "Section 1.2, Section 4"
+input:
+  specversion: "1.0"
+  id: "cs_01HY3KXPRICE0001"
+  vendor_id: "vercel"
+  category: "pricing"
+  severity: "medium"
+  title: "Pro plan bandwidth overage price increasing from $0.15 to $0.20/GB"
+  summary: "Vercel is increasing the bandwidth overage price on Pro plans from $0.15 per GB to $0.20 per GB, effective June 1 2026. The included bandwidth allocation (1 TB/month on Pro) is unchanged."
+  published_at: "2026-04-15T10:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.94
+  effective_date: "2026-06-01"
+  source_url: "https://vercel.com/blog/pricing-update-june-2026"
+  action_required: false
+  recommended_reviewers:
+    - "procurement"
+    - "engineering"
+  affected_systems:
+    - "Pro Plan"
+  tags:
+    - "bandwidth"
+    - "overage"
+    - "pro-plan"
+expected:
+  valid: true

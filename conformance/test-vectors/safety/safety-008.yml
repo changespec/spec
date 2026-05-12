@@ -1,0 +1,28 @@
+id: safety-008
+description: CLI exits 0 in advisory mode even when high-severity findings exist
+level: 1
+spec_clause: "integration-safety.md Section 5.2, cli-spec.md Section 3"
+category: safety
+scenario:
+  type: findings_present
+  simulated_findings:
+    - severity: critical
+      category: security
+      vendor_id: "npm:express"
+      title: "Critical CVE in express"
+    - severity: high
+      category: api_breaking
+      vendor_id: "stripe"
+      title: "Breaking API change in Stripe"
+  cli_flags: []   # no --fail-on flag - advisory mode
+expected:
+  cli_exit_code: 0
+  findings_count: 2
+  result_blocking: 0
+  stderr_clean: true   # no error output
+notes: >
+  In advisory mode (default, no --fail-on flag), the CLI MUST exit 0
+  regardless of the severity or count of findings. Findings are printed
+  to stdout for the user to read, but the exit code is always 0.
+  Exit code 1 MUST NOT be used for any ChangeSpec condition.
+  Only exit 2 (with --fail-on set) signals a blocking finding.

@@ -1,0 +1,21 @@
+id: valid-023
+description: Docker Hub namespaced vendor_id
+level: 1
+spec_clause: "Section 3.2"
+input:
+  specversion: "1.0"
+  id: "cs_docker_001"
+  vendor_id: "docker:postgres"
+  category: "api_breaking"
+  severity: "medium"
+  title: "postgres:16 Docker image: locale initialization behavior changed"
+  summary: "The official postgres:16 Docker image changed default locale initialization behavior in the 16.3 release. Containers initialized with postgres:16 before 16.3 may fail to start after upgrading the image. A one-time database re-initialization may be required."
+  published_at: "2026-04-07T10:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.88
+  affected_versions: ">=16.0 <16.3"
+  action_required: true
+  recommended_reviewers:
+    - "engineering"
+expected:
+  valid: true

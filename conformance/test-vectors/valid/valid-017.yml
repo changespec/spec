@@ -1,0 +1,17 @@
+id: valid-017
+description: Event with confidence_score at minimum value 0.0
+level: 1
+spec_clause: "Section 6.1"
+input:
+  specversion: "1.0"
+  id: "cs_lowconf_001"
+  vendor_id: "unknown-saas-vendor"
+  category: "informational"
+  severity: "informational"
+  title: "Possible policy change detected in vendor terms"
+  summary: "Automated change detection found a potential change in this vendor's terms document, but could not classify the nature or impact. Human review required before routing."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "community"
+  confidence_score: 0.0
+expected:
+  valid: true

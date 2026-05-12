@@ -1,0 +1,25 @@
+id: security-009
+description: Deeply nested extension field object (100 levels deep)
+level: 3
+spec_clause: "Section 12.1"
+input_type: generated
+generate:
+  type: deeply_nested_ext
+  depth: 100
+  field: "ext:test.nested"
+base_input:
+  specversion: "1.0"
+  id: "cs_sec_009"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Deeply nested extension field"
+  summary: "An extension field with 100 levels of object nesting. Must not cause a stack overflow."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: true
+  no_crash: true
+  max_memory_mb: 50
+  max_time_ms: 5000
+notes: "Extension fields can hold any JSON value. A deeply nested object is valid JSON. The parser must handle it without a stack overflow. Some implementations may impose a max depth; if so, they must return an error, not crash."

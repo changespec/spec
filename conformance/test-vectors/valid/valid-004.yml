@@ -1,0 +1,29 @@
+id: valid-004
+description: TOS update with affected_sections
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_01HY3KXTOS00001"
+  vendor_id: "github"
+  category: "tos"
+  severity: "low"
+  title: "Terms of Service updated: automated account restrictions clarified"
+  summary: "GitHub updated Section 2.4 of its Terms of Service to clarify restrictions on automated account creation and bulk repository scraping. The changes codify existing enforcement policy and do not restrict activity that was previously permitted."
+  published_at: "2026-03-15T18:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.88
+  effective_date: "2026-03-15"
+  source_url: "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service"
+  action_required: false
+  recommended_reviewers:
+    - "legal"
+  affected_sections:
+    - "Section 2 - Account Terms"
+    - "Section 2.4 - Account Requirements"
+  tags:
+    - "tos"
+    - "automation"
+    - "accounts"
+expected:
+  valid: true

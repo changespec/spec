@@ -1,0 +1,20 @@
+id: safety-002
+description: Client handles connection timeout gracefully
+level: 1
+spec_clause: "integration-safety.md Section 2"
+category: safety
+scenario:
+  type: network_timeout
+  timeout_after_ms: 0    # connection stalls immediately, never responds
+  client_timeout_budget_ms: 2000
+expected:
+  client_exits_nonzero: false
+  mcp_is_error: false
+  result_status: degraded
+  elapsed_max_ms: 3000   # must resolve within 3s (timeout + overhead), not hang
+  stderr_contains: "timeout"
+  stdout_clean: true
+notes: >
+  The client MUST NOT hang indefinitely. The hard timeout MUST fire and
+  the client MUST fall back to cache within the timeout budget plus
+  reasonable overhead. The total wall-clock time MUST be bounded.

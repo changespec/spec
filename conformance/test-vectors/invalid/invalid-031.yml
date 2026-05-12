@@ -1,0 +1,20 @@
+id: invalid-031
+description: recommended_reviewers contains an invalid role value
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_031"
+  vendor_id: "acme"
+  category: "data_handling"
+  severity: "medium"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  recommended_reviewers:
+    - "engineering"
+    - "devops"
+expected:
+  valid: false
+  reason: "recommended_reviewers contains invalid value 'devops'. Valid values: engineering, security, legal, compliance, procurement, management"

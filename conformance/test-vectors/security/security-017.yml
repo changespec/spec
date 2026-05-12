@@ -1,0 +1,25 @@
+id: security-017
+description: Signature value with non-base64url characters (e.g. plus sign from standard base64)
+level: 3
+spec_clause: "Section 7.2"
+input:
+  specversion: "1.0"
+  id: "cs_sec_017"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Bad signature base64"
+  summary: "signature.value contains standard base64 characters (+/) instead of base64url (_-). Must be rejected."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "publisher_verified"
+  confidence_score: 1.0
+  signature:
+    alg: "ed25519"
+    key_id: "acme-2026-01"
+    value: "MEQCIBnQ3x2R4xVz7kLm+9wYdFqJ1T2uHsG8eNvXcAoBpZkDAiBeKlW5mT3rYhN6pVs4cUq2/MxE"
+    signed_fields:
+      - "id"
+      - "vendor_id"
+expected:
+  valid: false
+  reason: "signature.value must be base64url encoded (no '+' or '/' characters)"

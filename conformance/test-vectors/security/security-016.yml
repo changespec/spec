@@ -1,0 +1,11 @@
+id: security-016
+description: Empty input - empty bytes
+level: 3
+spec_clause: "Section 12.1"
+input_type: raw_bytes
+raw_input: ""
+expected:
+  valid: false
+  error_type: "json_parse_error"
+  no_crash: true
+notes: "Empty input is not valid JSON. Must return a parse error without crashing."

@@ -1,0 +1,16 @@
+id: invalid-008
+description: Missing required field - source_type
+level: 1
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_test_008"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+expected:
+  valid: false
+  reason: "Missing required field: source_type"

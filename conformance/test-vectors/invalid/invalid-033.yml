@@ -1,0 +1,17 @@
+id: invalid-033
+description: published_at is not a valid RFC 3339 datetime
+level: 1
+spec_clause: "Section 1.3"
+input:
+  specversion: "1.0"
+  id: "cs_test_033"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "April 10, 2026"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "published_at must be a valid RFC 3339 datetime string"

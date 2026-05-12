@@ -1,0 +1,18 @@
+id: invalid-024
+description: cve_id in wrong format - too few digits in sequence
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_024"
+  vendor_id: "npm:some-package"
+  category: "security"
+  severity: "high"
+  title: "Security vulnerability"
+  summary: "A security vulnerability was found."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  cve_id: "CVE-2025-123"
+expected:
+  valid: false
+  reason: "cve_id sequence number must be at least 4 digits"

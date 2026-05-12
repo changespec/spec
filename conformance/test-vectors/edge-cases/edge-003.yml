@@ -1,0 +1,17 @@
+id: edge-003
+description: confidence_score at exact minimum boundary 0.0
+level: 2
+spec_clause: "Section 6.1"
+input:
+  specversion: "1.0"
+  id: "cs_edge_003"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Confidence at minimum"
+  summary: "Confidence score is exactly 0.0. This is the minimum allowed value."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "community"
+  confidence_score: 0.0
+expected:
+  valid: true

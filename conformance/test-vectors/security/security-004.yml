@@ -1,0 +1,20 @@
+id: security-004
+description: SSRF risk - source_url with file:// scheme
+level: 3
+spec_clause: "Section 12.2"
+input:
+  specversion: "1.0"
+  id: "cs_sec_004"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "SSRF test - file URL"
+  summary: "source_url uses the file:// scheme. This may or may not be rejected by URI validation (it is an absolute URI), but the validator must not open the file."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  source_url: "file:///etc/passwd"
+expected:
+  valid: false
+  reason: "source_url with file:// scheme is not a valid URL per JSON Schema format:uri validator"
+  no_file_access: true
+notes: "Most JSON Schema URI validators reject file:// as not matching the http(s) convention expected by 'uri' format. The validator must not open the file if it happens to accept the URL syntactically."

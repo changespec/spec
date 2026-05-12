@@ -1,0 +1,18 @@
+id: invalid-037
+description: migration_url is not a valid URI
+level: 1
+spec_clause: "Section 1.3"
+input:
+  specversion: "1.0"
+  id: "cs_test_037"
+  vendor_id: "acme"
+  category: "api_breaking"
+  severity: "high"
+  title: "Breaking API change"
+  summary: "A breaking change was made to the API."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  migration_url: "not-a-url"
+expected:
+  valid: false
+  reason: "migration_url must be a valid absolute URI"

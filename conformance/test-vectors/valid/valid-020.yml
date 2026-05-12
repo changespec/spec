@@ -1,0 +1,24 @@
+id: valid-020
+description: Event with multiple extension fields of different types
+level: 1
+spec_clause: "Section 10"
+input:
+  specversion: "1.0"
+  id: "cs_multiext_001"
+  vendor_id: "salesforce"
+  category: "data_handling"
+  severity: "medium"
+  title: "Salesforce: new subprocessor added to EMEA DPA"
+  summary: "Salesforce added a new subprocessor, DataStream EU GmbH, to its EMEA Data Processing Addendum effective 2026-06-01. Organizations with 30-day objection rights should review by 2026-05-01."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.88
+  effective_date: "2026-06-01"
+  "ext:compliance.gdpr_article": "28"
+  "ext:compliance.requires_dpa_review": true
+  "ext:compliance.objection_deadline": "2026-05-01"
+  "ext:risk.vendor_tier": 1
+  "ext:internal.ticket_id": "LEGAL-9912"
+  "ext:internal.assigned_to": "privacy-team"
+expected:
+  valid: true

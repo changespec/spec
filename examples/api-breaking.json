@@ -1,0 +1,32 @@
+{
+  "specversion": "1.0",
+  "id": "cs_01HY3KXBREAKING001",
+  "vendor_id": "stripe",
+  "category": "api_breaking",
+  "severity": "high",
+  "title": "PaymentIntent.confirm() now requires return_url in all redirect flows",
+  "summary": "Starting with the 2026-05-01 API version, the confirm() method on PaymentIntent requires the return_url parameter whenever a redirect may occur. Previously, omitting return_url caused unpredictable behavior in some payment methods; this change enforces explicit handling. Applications that call confirm() without return_url will receive a 400 error with code missing_required_param.",
+  "published_at": "2026-04-10T14:00:00Z",
+  "source_type": "publisher_verified",
+  "confidence_score": 1.0,
+  "effective_date": "2026-05-01",
+  "source_url": "https://stripe.com/docs/upgrades#2026-05-01",
+  "affected_versions": ">=14.0.0 <15.0.0",
+  "migration_hint": "Add return_url to all confirm() calls. For server-side confirmation flows that never redirect, pass return_url: null explicitly to confirm intent.",
+  "migration_url": "https://stripe.com/docs/migration/v15",
+  "action_required": true,
+  "recommended_reviewers": ["engineering"],
+  "affected_systems": ["Payments API", "PaymentIntent"],
+  "tags": ["payment-intent", "breaking", "v15"],
+  "signature": {
+    "alg": "ed25519",
+    "key_id": "stripe-2026-01",
+    "value": "MEQCIBnQ3x2R4xVz7kLmP9wYdFqJ1T2uHsG8eNvXcAoBpZkDAiBeKlW5mT3rYhN6pVs4cUq2wMxE9fDjLiR0vSnOgAtQ",
+    "signed_fields": [
+      "specversion", "id", "vendor_id", "category", "severity",
+      "title", "summary", "published_at", "source_type",
+      "signature.alg", "signature.key_id", "signature.signed_fields",
+      "source_url", "migration_url", "action_required", "affected_versions"
+    ]
+  }
+}

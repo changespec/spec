@@ -1,0 +1,16 @@
+id: valid-025
+description: Event with title at maximum length (200 characters)
+level: 2
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_maxtitle_001"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghij"
+  summary: "This event tests that a title at exactly 200 characters is accepted."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: true

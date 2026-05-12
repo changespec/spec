@@ -1,0 +1,27 @@
+id: valid-014
+description: Namespaced vendor_id using gh namespace for GitHub repository
+level: 1
+spec_clause: "Section 3.2"
+input:
+  specversion: "1.0"
+  id: "cs_gh_event_001"
+  vendor_id: "gh:facebook/react"
+  category: "api_breaking"
+  severity: "high"
+  title: "React 19: legacy root API removed, use createRoot"
+  summary: "React 19 removes the legacy ReactDOM.render() and ReactDOM.hydrate() APIs. All callers must migrate to ReactDOM.createRoot() and root.render(). The legacy APIs have been deprecated since React 18; React 19 removes them entirely with no fallback."
+  published_at: "2026-04-03T12:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.97
+  affected_versions: ">=19.0.0"
+  migration_hint: "Replace ReactDOM.render(element, container) with createRoot(container).render(element)."
+  migration_url: "https://react.dev/blog/2022/03/08/react-18-upgrade-guide"
+  action_required: true
+  recommended_reviewers:
+    - "engineering"
+  tags:
+    - "react-19"
+    - "root-api"
+    - "breaking"
+expected:
+  valid: true

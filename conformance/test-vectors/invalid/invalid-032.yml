@@ -1,0 +1,25 @@
+id: invalid-032
+description: recommended_reviewers exceeds maximum of 6 items
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_032"
+  vendor_id: "acme"
+  category: "data_handling"
+  severity: "high"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  recommended_reviewers:
+    - "engineering"
+    - "security"
+    - "legal"
+    - "compliance"
+    - "procurement"
+    - "management"
+    - "engineering"
+expected:
+  valid: false
+  reason: "recommended_reviewers exceeds maximum of 6 items"

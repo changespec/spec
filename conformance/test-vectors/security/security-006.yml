@@ -1,0 +1,23 @@
+id: security-006
+description: Prototype pollution attempt via constructor key - rejected by schema
+level: 3
+spec_clause: "Section 12.1, Section 12.11"
+input_type: json_string
+input_json: |
+  {
+    "specversion": "1.0",
+    "id": "cs_sec_006",
+    "vendor_id": "acme",
+    "category": "informational",
+    "severity": "informational",
+    "title": "Constructor pollution test",
+    "summary": "This event contains a constructor key. Must be rejected by schema and must not corrupt the parser.",
+    "published_at": "2026-04-10T14:00:00Z",
+    "source_type": "crawled",
+    "constructor": {"prototype": {"isAdmin": true}}
+  }
+expected:
+  valid: false
+  no_prototype_corruption: true
+  reason: "constructor is not a defined ChangeSpec field and not an ext: prefixed extension field. The schema rejects it via additionalProperties: false."
+notes: "The schema's additionalProperties: false rejects constructor before it can reach any object-merging code. JavaScript implementations must also ensure ext: field extraction filters out __proto__, constructor, and prototype keys."

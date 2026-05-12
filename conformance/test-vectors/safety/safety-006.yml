@@ -1,0 +1,23 @@
+id: safety-006
+description: Client respects CHANGESPEC_SKIP=1 bypass - makes no network calls
+level: 1
+spec_clause: "integration-safety.md Section 1.3"
+category: safety
+scenario:
+  type: bypass
+  env:
+    CHANGESPEC_SKIP: "1"
+  network_monitor: true   # fail if any network call is observed
+expected:
+  client_exits_nonzero: false
+  mcp_is_error: false
+  result_status: skipped
+  result_events_count: 0
+  network_calls_made: 0   # MUST be zero
+  stderr_contains: "skip"
+  stdout_clean: true
+notes: >
+  When CHANGESPEC_SKIP=1 is set, the client MUST make zero network calls.
+  This is verified by monitoring for any outbound connection. The result
+  MUST indicate status=skipped. CLI exits 0. MCP returns non-error result.
+  This is the primary escape hatch for users whose builds are affected.

@@ -1,0 +1,17 @@
+id: valid-028
+description: Event with Unicode characters in title and summary
+level: 1
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_unicode_001"
+  vendor_id: "localized-saas"
+  category: "informational"
+  severity: "informational"
+  title: "Changelog: support for Japanese (日本語) and Arabic (العربية) locales"
+  summary: "The platform now supports Japanese and Arabic user interfaces. The Japanese locale uses full-width punctuation (。！？) and the Arabic locale uses right-to-left text rendering. No breaking changes for existing English-locale integrations."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.93
+expected:
+  valid: true

@@ -1,0 +1,31 @@
+id: safety-004
+description: Client caches a successful response to disk
+level: 1
+spec_clause: "integration-safety.md Section 4"
+category: safety
+scenario:
+  type: successful_response
+  simulated_response:
+    status: 200
+    body:
+      events:
+        - specversion: "1.0"
+          id: "cs_CACHE_TEST_001"
+          vendor_id: "stripe"
+          category: "api_breaking"
+          severity: "high"
+          title: "Cache test event"
+          summary: "This event should be cached locally."
+          published_at: "2026-04-16T10:00:00Z"
+          source_type: "crawled"
+expected:
+  cache_written: true
+  cache_contains_events: true
+  cache_contains_generated_at: true
+  cache_contains_expires_at: true
+  result_status: ok
+notes: >
+  After a successful API response, the client MUST write the response to
+  the local cache directory. The cache file MUST contain: the events,
+  cached_at (timestamp of when the cache was written), and expires_at
+  (TTL-based expiry). This cache will be served in safety-005.

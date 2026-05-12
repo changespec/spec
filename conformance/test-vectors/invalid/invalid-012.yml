@@ -1,0 +1,17 @@
+id: invalid-012
+description: Invalid category value - close misspelling of valid value
+level: 1
+spec_clause: "Section 4"
+input:
+  specversion: "1.0"
+  id: "cs_test_012"
+  vendor_id: "acme"
+  category: "api-breaking"
+  severity: "high"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "Invalid category value: 'api-breaking' uses hyphen instead of underscore. Valid value is 'api_breaking'."

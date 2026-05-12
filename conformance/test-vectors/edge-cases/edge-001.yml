@@ -1,0 +1,17 @@
+id: edge-001
+description: Title at exactly the maximum length boundary (200 characters)
+level: 2
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_edge_001"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  summary: "Title is exactly 200 characters. This must be accepted."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: true
+notes: "The title field is exactly 200 characters (the 'A' repeated 200 times). Must be accepted. 201 characters is tested in invalid-018."

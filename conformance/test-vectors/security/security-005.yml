@@ -1,0 +1,23 @@
+id: security-005
+description: Prototype pollution attempt via JSON key __proto__ - rejected by schema
+level: 3
+spec_clause: "Section 12.1, Section 12.11"
+input_type: json_string
+input_json: |
+  {
+    "specversion": "1.0",
+    "id": "cs_sec_005",
+    "vendor_id": "acme",
+    "category": "informational",
+    "severity": "informational",
+    "title": "Prototype pollution test",
+    "summary": "This event contains a __proto__ key. Must be rejected by additionalProperties: false and must not corrupt the parser object model.",
+    "published_at": "2026-04-10T14:00:00Z",
+    "source_type": "crawled",
+    "__proto__": {"isAdmin": true}
+  }
+expected:
+  valid: false
+  no_prototype_corruption: true
+  reason: "__proto__ is not a defined ChangeSpec field and not an ext: prefixed extension field. The schema rejects it via additionalProperties: false."
+notes: "The schema's additionalProperties: false rejects __proto__ before it can reach any object-merging code. This is defense-in-depth against prototype pollution. TypeScript implementations must additionally ensure ext: field extraction does not merge __proto__ into object prototypes."

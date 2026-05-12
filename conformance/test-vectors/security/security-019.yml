@@ -1,0 +1,20 @@
+id: security-019
+description: SSRF risk - migration_url pointing to gopher scheme
+level: 3
+spec_clause: "Section 12.2"
+input:
+  specversion: "1.0"
+  id: "cs_sec_019"
+  vendor_id: "acme"
+  category: "api_breaking"
+  severity: "high"
+  title: "SSRF test - gopher URL"
+  summary: "migration_url uses the gopher scheme. Must be rejected as not a valid http(s) URI or accepted without fetching."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  migration_url: "gopher://internal.example.com:70/1/path"
+expected:
+  valid: false
+  reason: "migration_url must be a valid URI; gopher:// scheme is rejected by strict URI validators"
+  no_network_requests: true
+notes: "gopher:// is an absolute URI but most JSON Schema 'uri' format validators reject non-http(s) schemes. The validator must not make network connections to this URL."

@@ -1,0 +1,18 @@
+id: invalid-021
+description: confidence_score less than 0.0
+level: 1
+spec_clause: "Section 6.1"
+input:
+  specversion: "1.0"
+  id: "cs_test_021"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: -0.1
+expected:
+  valid: false
+  reason: "confidence_score must be in range [0.0, 1.0], got -0.1"

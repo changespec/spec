@@ -1,0 +1,19 @@
+id: security-003
+description: SSRF risk - source_url with http:// to AWS instance metadata endpoint rejected
+level: 3
+spec_clause: "Section 1.3, Section 12.10"
+input:
+  specversion: "1.0"
+  id: "cs_sec_003"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "SSRF test - metadata URL with http://"
+  summary: "source_url points to AWS instance metadata endpoint using http://. Must be rejected: schema requires https:// scheme."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  source_url: "http://169.254.169.254/latest/meta-data/"
+expected:
+  valid: false
+  reason: "source_url must use the https:// scheme. http:// to any host including 169.254.169.254 is rejected by the schema pattern constraint."
+notes: "169.254.169.254 is the AWS instance metadata endpoint. The URL uses http:// which is rejected by the https-only schema constraint. The validator must not fetch it, and must reject the event."

@@ -1,0 +1,20 @@
+id: edge-015
+description: Event with unknown non-extension fields (schema rejects; consumers silently ignore per Section 11.2)
+level: 2
+spec_clause: "Section 11.2, Section 1.3"
+input:
+  specversion: "1.0"
+  id: "cs_edge_015"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Forward compatibility test"
+  summary: "This event contains a field that does not exist in ChangeSpec 1.0 but might be added in 1.1."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  hypothetical_v11_field: "some-value"
+  another_future_field: 42
+expected:
+  valid: false
+  reason: "Unknown non-extension fields are rejected by the strict schema (additionalProperties: false). Extension fields must use the ext: prefix. Conforming consumers silently ignore such fields at runtime, but the schema rejects unknown non-ext fields from producers."
+notes: "The schema enforces additionalProperties: false for producer conformance. Section 11.2 (consumer MUST ignore unknown fields) applies at runtime dispatch, not at schema validation. Unknown fields added in future spec versions use the ext: prefix until promoted to core fields."

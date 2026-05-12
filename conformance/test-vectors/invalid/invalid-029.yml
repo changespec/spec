@@ -1,0 +1,39 @@
+id: invalid-029
+description: tags array exceeds maximum of 20 items
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_029"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  tags:
+    - "tag01"
+    - "tag02"
+    - "tag03"
+    - "tag04"
+    - "tag05"
+    - "tag06"
+    - "tag07"
+    - "tag08"
+    - "tag09"
+    - "tag10"
+    - "tag11"
+    - "tag12"
+    - "tag13"
+    - "tag14"
+    - "tag15"
+    - "tag16"
+    - "tag17"
+    - "tag18"
+    - "tag19"
+    - "tag20"
+    - "tag21"
+expected:
+  valid: false
+  reason: "tags array exceeds maximum of 20 items"

@@ -1,0 +1,24 @@
+id: valid-019
+description: Event with cvss_score at maximum value 10.0
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_cvss_max_001"
+  vendor_id: "npm:critical-lib"
+  category: "security"
+  severity: "critical"
+  title: "CVE-2026-99999: Remote code execution, CVSS 10.0"
+  summary: "A remote code execution vulnerability in critical-lib allows an unauthenticated attacker to execute arbitrary code with no user interaction. All versions are affected. There is no known patch. Disable the affected functionality immediately and monitor vendor advisories."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 1.0
+  cve_id: "CVE-2026-99999"
+  cvss_score: 10.0
+  cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+  action_required: true
+  recommended_reviewers:
+    - "security"
+    - "engineering"
+expected:
+  valid: true

@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://changespec.com/schema/1.0/changespec.json",
+  "title": "ChangeSpec Event",
+  "description": "A ChangeSpec 1.0 event describing a software change from a vendor or package maintainer.",
+  "type": "object",
+  "required": [
+    "specversion",
+    "id",
+    "vendor_id",
+    "category",
+    "severity",
+    "title",
+    "summary",
+    "published_at",
+    "source_type"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "specversion": {
+      "type": "string",
+      "const": "1.0",
+      "description": "ChangeSpec specification version. Must be '1.0'."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Globally unique event identifier. Producers SHOULD use the format 'cs_' followed by a ULID or UUIDv4."
+    },
+    "vendor_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/@:-]*$",
+      "description": "Identifies the vendor or package. Optionally namespace-prefixed (e.g., 'npm:lodash', 'pypi:requests'). No-namespace slugs identify named services."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "api_breaking",
+        "api_deprecation",
+        "security",
+        "data_handling",
+        "liability",
+        "pricing",
+        "tos",
+        "cosmetic",
+        "informational"
+      ],
+      "description": "Change category classifying the type of change."
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low",
+        "informational"
+      ],
+      "description": "Change severity indicating urgency and potential impact."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[^\\n\\r]+$",
+      "description": "Short human-readable change title. No newlines. No markdown."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "description": "1-5 sentence plain-English description of what changed and the impact."
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 datetime when this event was published."
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "publisher_verified",
+        "crawled",
+        "community"
+      ],
+      "description": "How this event was produced. publisher_verified: vendor pushed directly. crawled: automated detection. community: community submission."
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date",
+      "description": "RFC 3339 full-date (YYYY-MM-DD) when the change takes effect."
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "maxLength": 2048,
+      "description": "URL of the primary source document for this event. Must use the https:// scheme."
+    },
+    "affected_versions": {
+      "type": "string",
+      "maxLength": 256,
+      "description": "Semver range (npm syntax) describing which versions are affected. Example: '>=14.0.0 <15.0.0'."
+    },
+    "fixed_in_version": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Exact semver version where this issue is resolved."
+    },
+    "migration_hint": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "One or two sentences describing the immediate action a consumer should take. Plain text."
+    },
+    "migration_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "maxLength": 2048,
+      "description": "URL of a migration guide or detailed remediation instructions. Must use the https:// scheme."
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Producer confidence in the classification. 1.0 for publisher_verified. Lower values for automated classification."
+    },
+    "sunset_date": {
+      "type": "string",
+      "format": "date",
+      "description": "RFC 3339 full-date when the deprecated feature is removed or new terms take effect."
+    },
+    "cve_id": {
+      "type": "string",
+      "pattern": "^CVE-[0-9]{4}-[0-9]{4,}$",
+      "description": "CVE identifier. For security events only. Example: CVE-2024-12345."
+    },
+    "cvss_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 10.0,
+      "description": "CVSS base score (0.0-10.0). For security events only."
+    },
+    "cvss_vector": {
+      "type": "string",
+      "pattern": "^CVSS:[0-9]\\.[0-9]/",
+      "maxLength": 128,
+      "description": "CVSS vector string. Example: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H."
+    },
+    "affected_systems": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "maxItems": 50,
+      "uniqueItems": true,
+      "description": "Named systems or services within the vendor that are affected."
+    },
+    "affected_sections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "maxItems": 50,
+      "uniqueItems": true,
+      "description": "Document section headers affected (relevant for TOS/DPA changes)."
+    },
+    "action_required": {
+      "type": "boolean",
+      "description": "Whether consumers must take action. True for breaking changes and critical security events."
+    },
+    "recommended_reviewers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "engineering",
+          "security",
+          "legal",
+          "compliance",
+          "procurement",
+          "management"
+        ]
+      },
+      "maxItems": 6,
+      "uniqueItems": true,
+      "description": "Suggested reviewer roles. Values are advisory."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 50,
+        "pattern": "^[a-z0-9][a-z0-9_-]*$"
+      },
+      "maxItems": 20,
+      "uniqueItems": true,
+      "description": "Freeform lowercase tags for filtering."
+    },
+    "signature": {
+      "type": "object",
+      "required": ["alg", "key_id", "value", "signed_fields"],
+      "additionalProperties": false,
+      "description": "Ed25519 signature block. Present only on publisher_verified events.",
+      "properties": {
+        "alg": {
+          "type": "string",
+          "const": "ed25519",
+          "description": "Signature algorithm. Must be 'ed25519'."
+        },
+        "key_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,127}$",
+          "description": "Identifies the signing key for public key lookup. Scoped by vendor_id at resolution time."
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "description": "Base64url-encoded Ed25519 signature (64 bytes, no padding)."
+        },
+        "signed_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 9,
+          "uniqueItems": true,
+          "description": "Ordered list of field names included in the signature input. Must include all required event fields plus signature.alg, signature.key_id, and signature.signed_fields."
+        },
+        "key_fingerprint": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$",
+          "description": "Optional SHA-256 fingerprint of the public key, base64url-encoded (43 characters, no padding). When present, consumers MUST verify the resolved key matches this fingerprint."
+        }
+      }
+    }
+  },
+  "patternProperties": {
+    "^ext:": {
+      "description": "Extension field. Must use 'ext:<namespace>.<fieldname>' format."
+    }
+  },
+  "if": {
+    "properties": {
+      "source_type": { "const": "publisher_verified" }
+    }
+  },
+  "then": {
+    "properties": {
+      "confidence_score": {
+        "const": 1.0
+      }
+    }
+  },
+  "examples": [
+    {
+      "specversion": "1.0",
+      "id": "cs_01HXYZ1234ABCD",
+      "vendor_id": "stripe",
+      "category": "api_breaking",
+      "severity": "high",
+      "title": "confirm() now requires return_url parameter",
+      "summary": "The PaymentIntent confirm() method now requires the return_url parameter in all cases where a redirect may occur. Calls without return_url that previously succeeded will now return a 400 error.",
+      "published_at": "2026-04-10T14:00:00Z",
+      "source_type": "publisher_verified",
+      "effective_date": "2026-05-01",
+      "source_url": "https://stripe.com/docs/upgrades#2026-05-01",
+      "affected_versions": ">=14.0.0 <15.0.0",
+      "migration_hint": "Add return_url to all confirm() calls.",
+      "migration_url": "https://stripe.com/docs/migration/v15",
+      "action_required": true,
+      "recommended_reviewers": ["engineering"],
+      "confidence_score": 1.0
+    }
+  ]
+}

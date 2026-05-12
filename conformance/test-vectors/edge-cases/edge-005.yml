@@ -1,0 +1,20 @@
+id: edge-005
+description: cvss_score at exact maximum boundary 10.0
+level: 2
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_edge_005"
+  vendor_id: "npm:critical-lib"
+  category: "security"
+  severity: "critical"
+  title: "CVE-2026-10000: Perfect 10 CVSS score"
+  summary: "A critical vulnerability with the maximum possible CVSS base score of 10.0."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.99
+  cve_id: "CVE-2026-10000"
+  cvss_score: 10.0
+  cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+expected:
+  valid: true

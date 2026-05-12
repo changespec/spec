@@ -1,0 +1,10 @@
+pyproject.toml
+changespec/__init__.py
+changespec/types.py
+changespec/validate.py
+changespec.egg-info/PKG-INFO
+changespec.egg-info/SOURCES.txt
+changespec.egg-info/dependency_links.txt
+changespec.egg-info/requires.txt
+changespec.egg-info/top_level.txt
+tests/test_examples.py

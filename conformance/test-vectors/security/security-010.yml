@@ -1,0 +1,22 @@
+id: security-010
+description: JSON input with duplicate keys - must not crash, must handle deterministically
+level: 3
+spec_clause: "Section 12.1"
+input_type: json_string
+input_json: |
+  {
+    "specversion": "1.0",
+    "id": "cs_sec_010_first",
+    "id": "cs_sec_010_second",
+    "vendor_id": "acme",
+    "category": "informational",
+    "severity": "informational",
+    "title": "Duplicate key test",
+    "summary": "This event has a duplicate 'id' key. Must not crash.",
+    "published_at": "2026-04-10T14:00:00Z",
+    "source_type": "crawled"
+  }
+expected:
+  valid: true
+  no_crash: true
+notes: "JSON technically permits duplicate keys but behavior is undefined. Most parsers take the last value. The result must be either a successful parse using either value, or a clean error. Must not crash. If the parser takes 'cs_sec_010_second' as the id, the event is valid."

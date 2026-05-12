@@ -1,0 +1,19 @@
+id: edge-011
+description: tag at exactly 50 character maximum length
+level: 2
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_edge_011"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Tag at maximum length"
+  summary: "A tag item at exactly 50 characters must be accepted."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  tags:
+    - "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1"
+expected:
+  valid: true
+notes: "Tag is exactly 50 characters. Must be accepted."

@@ -1,0 +1,32 @@
+{
+  "specversion": "1.0",
+  "id": "cs_01HY3KXDEPRECATE001",
+  "vendor_id": "anthropic",
+  "category": "api_deprecation",
+  "severity": "medium",
+  "title": "claude-2 model deprecated, sunset 2027-01-01",
+  "summary": "The claude-2 and claude-2.1 model identifiers are deprecated and will stop accepting requests on 2027-01-01. Applications should migrate to claude-3-5-sonnet-20241022 or later. After the sunset date, requests to deprecated model identifiers will return a 404 error.",
+  "published_at": "2026-04-01T10:00:00Z",
+  "source_type": "publisher_verified",
+  "confidence_score": 1.0,
+  "effective_date": "2026-04-01",
+  "sunset_date": "2027-01-01",
+  "source_url": "https://docs.anthropic.com/deprecations",
+  "migration_hint": "Replace 'claude-2' or 'claude-2.1' with 'claude-3-5-sonnet-20241022' in your model parameter. Review the model comparison page to select the best match for your use case.",
+  "migration_url": "https://docs.anthropic.com/models/overview",
+  "action_required": true,
+  "recommended_reviewers": ["engineering"],
+  "affected_systems": ["Messages API", "Legacy Completion API"],
+  "tags": ["model-deprecation", "claude-2", "sunset"],
+  "signature": {
+    "alg": "ed25519",
+    "key_id": "anthropic-2026-01",
+    "value": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4",
+    "signed_fields": [
+      "specversion", "id", "vendor_id", "category", "severity",
+      "title", "summary", "published_at", "source_type",
+      "signature.alg", "signature.key_id", "signature.signed_fields",
+      "source_url", "migration_url", "action_required", "sunset_date"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+id: invalid-025
+description: cvss_vector in wrong format - missing version prefix
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_025"
+  vendor_id: "npm:some-package"
+  category: "security"
+  severity: "high"
+  title: "Security vulnerability"
+  summary: "A security vulnerability was found."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  cvss_vector: "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+expected:
+  valid: false
+  reason: "cvss_vector must start with 'CVSS:X.Y/' format"

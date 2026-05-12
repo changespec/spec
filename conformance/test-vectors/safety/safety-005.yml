@@ -1,0 +1,22 @@
+id: safety-005
+description: Client returns cached data when the API is offline
+level: 1
+spec_clause: "integration-safety.md Section 4"
+category: safety
+scenario:
+  type: offline
+  precondition: cache_populated_with_valid_data
+  api_unavailable: true
+expected:
+  client_exits_nonzero: false
+  mcp_is_error: false
+  result_status: degraded
+  result_has_events: true      # events come from cache
+  result_cached_at_present: true
+  stderr_contains: "cached"
+  stdout_clean: true
+notes: >
+  When the API is unreachable and a valid local cache exists, the client
+  MUST return the cached data. The response MUST include status=degraded
+  and cached_at. A staleness warning MUST appear on stderr. The CLI
+  MUST exit 0. The MCP server MUST NOT return isError=true.

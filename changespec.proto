@@ -1,0 +1,152 @@
+// ChangeSpec 1.0 Protobuf schema (draft).
+//
+// JSON is the canonical format. Protobuf is a wire-compatible alternate
+// encoding for high-throughput agent-to-agent and gRPC ecosystems.
+//
+// Signature verification is always performed over the canonical JSON
+// form (JCS per RFC 8785). Implementations that receive Protobuf MUST
+// convert to canonical JSON before verifying signatures.
+//
+// This schema mirrors schema.json 1:1. Any drift between the two is a
+// spec bug - report at github.com/changespec/spec/issues.
+
+syntax = "proto3";
+
+package changespec.v1;
+
+option go_package = "github.com/changespec/changespec-go/proto/changespecv1";
+option java_package = "org.changespec.v1";
+option java_multiple_files = true;
+
+// A ChangeSpec event describes a single software change.
+message ChangeEvent {
+  // Specification version. Must be "1.0".
+  string spec_version = 1;
+
+  // Globally unique event identifier. Format: "cs_" + ULID or UUIDv4.
+  string id = 2;
+
+  // Namespaced vendor identifier (e.g., "anthropic", "npm:lodash").
+  string vendor_id = 3;
+
+  // Semantic category of the change.
+  Category category = 4;
+
+  // Severity level.
+  Severity severity = 5;
+
+  // Short human-readable title. Max 200 chars.
+  string title = 6;
+
+  // 2-4 sentence plain-language summary.
+  string summary = 7;
+
+  // Publication timestamp (RFC 3339 / ISO 8601 with timezone).
+  string published_at = 8;
+
+  // How this event was sourced.
+  SourceType source_type = 9;
+
+  // --- Optional fields below ---
+
+  // When the change takes effect (RFC 3339 date-only or date-time).
+  string effective_date = 10;
+
+  // HTTPS URL to primary source documentation.
+  string source_url = 11;
+
+  // HTTPS URL to migration guide, if applicable.
+  string migration_url = 12;
+
+  // Plain-language migration hint.
+  string migration_hint = 13;
+
+  // Affected version range (semver range for package changes).
+  string affected_versions = 14;
+
+  // Sunset date for deprecations (RFC 3339 date).
+  string sunset_date = 15;
+
+  // CVE identifier for security events.
+  string cve_id = 16;
+
+  // CVSS 3.1+ vector string.
+  string cvss_vector = 17;
+
+  // CVSS score 0.0-10.0.
+  float cvss_score = 18;
+
+  // Whether this change requires consumer action.
+  bool action_required = 19;
+
+  // Confidence score 0.0-1.0. Crawled events carry sub-1.0 confidence.
+  float confidence_score = 20;
+
+  // Recommended internal reviewer teams.
+  repeated string recommended_reviewers = 21;
+
+  // Affected subsystems or products of the vendor.
+  repeated string affected_systems = 22;
+
+  // Lowercase tag list for categorization.
+  repeated string tags = 23;
+
+  // Optional cryptographic signature.
+  Signature signature = 24;
+
+  // Extension fields. Keys MUST be prefixed with "ext:" in the JSON
+  // canonical form; when encoded as Protobuf they appear here as
+  // (key, JSON-serialized value) pairs.
+  map<string, string> extensions = 25;
+}
+
+// Category of a ChangeSpec event.
+enum Category {
+  CATEGORY_UNSPECIFIED = 0;
+  CATEGORY_API_BREAKING = 1;
+  CATEGORY_API_DEPRECATION = 2;
+  CATEGORY_SECURITY = 3;
+  CATEGORY_DATA_HANDLING = 4;
+  CATEGORY_LIABILITY = 5;
+  CATEGORY_PRICING = 6;
+  CATEGORY_TOS = 7;
+  CATEGORY_COSMETIC = 8;
+  CATEGORY_INFORMATIONAL = 9;
+}
+
+// Severity of a ChangeSpec event.
+enum Severity {
+  SEVERITY_UNSPECIFIED = 0;
+  SEVERITY_CRITICAL = 1;
+  SEVERITY_HIGH = 2;
+  SEVERITY_MEDIUM = 3;
+  SEVERITY_LOW = 4;
+  SEVERITY_INFORMATIONAL = 5;
+}
+
+// How a ChangeSpec event was sourced.
+enum SourceType {
+  SOURCE_TYPE_UNSPECIFIED = 0;
+  SOURCE_TYPE_PUBLISHER_VERIFIED = 1;
+  SOURCE_TYPE_CRAWLED = 2;
+  SOURCE_TYPE_COMMUNITY_REPORTED = 3;
+}
+
+// Cryptographic signature over the canonical JSON representation.
+message Signature {
+  // Signing algorithm. "ed25519" is the only value defined in 1.0.
+  string algorithm = 1;
+
+  // Namespaced key identifier scoped to vendor_id.
+  string key_id = 2;
+
+  // Base64url-encoded signature bytes.
+  string signature = 3;
+
+  // Ordered list of fields covered by the signature. Must include the
+  // mandatory minimum (see spec Section 7.4).
+  repeated string signed_fields = 4;
+
+  // Optional key fingerprint for convenient pinning.
+  string key_fingerprint = 5;
+}

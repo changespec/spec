@@ -1,0 +1,16 @@
+id: edge-002
+description: RFC 3339 datetime with large positive timezone offset (+14:00 is valid)
+level: 2
+spec_clause: "Section 1.3, Appendix C (RFC 3339)"
+input:
+  specversion: "1.0"
+  id: "cs_edge_002"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Timezone offset edge case"
+  summary: "Event published with a large positive timezone offset. RFC 3339 permits offsets up to +14:00."
+  published_at: "2026-04-10T14:00:00+14:00"
+  source_type: "crawled"
+expected:
+  valid: true

@@ -1,0 +1,19 @@
+id: edge-007
+description: CVE ID with long sequence number (more than 4 digits)
+level: 2
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_edge_007"
+  vendor_id: "npm:some-package"
+  category: "security"
+  severity: "high"
+  title: "CVE-2026-100000: five-digit CVE sequence number"
+  summary: "Security advisory with a 6-digit CVE sequence number. This is valid per the CVE format which allows 4 or more digits."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.9
+  cve_id: "CVE-2026-100000"
+expected:
+  valid: true
+notes: "CVE pattern ^CVE-[0-9]{4}-[0-9]{4,}$ allows any number of digits >= 4. CVE-2026-100000 has 6 digits and is valid."

@@ -1,0 +1,20 @@
+id: invalid-030
+description: tag contains uppercase letters - violates lowercase pattern
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_test_030"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  tags:
+    - "ValidTag"
+    - "another-tag"
+expected:
+  valid: false
+  reason: "tags items must match pattern [a-z0-9][a-z0-9_-]* (lowercase only)"

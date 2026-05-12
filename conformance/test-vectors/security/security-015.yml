@@ -1,0 +1,10 @@
+id: security-015
+description: JSON number at top level
+level: 3
+spec_clause: "Section 12.1"
+input_type: json_string
+input_json: "42"
+expected:
+  valid: false
+  reason: "Input must be a JSON object"
+  no_crash: true

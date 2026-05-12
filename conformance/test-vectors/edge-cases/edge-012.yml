@@ -1,0 +1,16 @@
+id: edge-012
+description: vendor_id with underscore in slug (valid character)
+level: 2
+spec_clause: "Section 3.1"
+input:
+  specversion: "1.0"
+  id: "cs_edge_012"
+  vendor_id: "my_company"
+  category: "informational"
+  severity: "informational"
+  title: "Vendor ID with underscore"
+  summary: "Vendor ID contains an underscore which is permitted in the slug character set."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: true

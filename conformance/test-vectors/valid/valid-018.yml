@@ -1,0 +1,21 @@
+id: valid-018
+description: Event with cvss_score at minimum value 0.0
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_cvss_min_001"
+  vendor_id: "npm:some-package"
+  category: "security"
+  severity: "informational"
+  title: "CVE-2026-00001: Informational security advisory, no exploitable impact"
+  summary: "A CVE was filed for a theoretical vulnerability in some-package that requires physical access to the machine and root privileges to exploit. CVSS base score is 0.0 as no practical attack vector exists."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.95
+  cve_id: "CVE-2026-00001"
+  cvss_score: 0.0
+  cvss_vector: "CVSS:3.1/AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+  action_required: false
+expected:
+  valid: true

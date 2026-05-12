@@ -1,0 +1,22 @@
+id: valid-009
+description: Community-submitted event with confidence_score below 0.7
+level: 1
+spec_clause: "Section 6, Section 6.1"
+input:
+  specversion: "1.0"
+  id: "cs_community_001"
+  vendor_id: "pypi:requests"
+  category: "security"
+  severity: "medium"
+  title: "Unverified report: SSL certificate validation bypass in some configurations"
+  summary: "A community member reports that requests may bypass SSL certificate validation when certain proxy configurations are used. This has not been independently verified. Confidence score reflects unverified community submission."
+  published_at: "2026-04-12T08:30:00Z"
+  source_type: "community"
+  confidence_score: 0.45
+  source_url: "https://github.com/psf/requests/issues/99999"
+  tags:
+    - "ssl"
+    - "proxy"
+    - "unverified"
+expected:
+  valid: true

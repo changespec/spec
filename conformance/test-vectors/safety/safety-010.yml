@@ -1,0 +1,26 @@
+id: safety-010
+description: Client surfaces degradation warning to user without crashing
+level: 1
+spec_clause: "integration-safety.md Section 5"
+category: safety
+scenario:
+  type: offline
+  api_unavailable: true
+  no_cache: true    # worst case: offline AND no cache
+expected:
+  client_exits_nonzero: false
+  mcp_is_error: false
+  result_status: degraded
+  result_events_count: 0    # no cache, no events
+  stderr_contains_warning: true
+  stderr_contains_bypass_hint: true   # must mention CHANGESPEC_SKIP=1
+  stdout_clean: true
+  no_exception_thrown: true
+notes: >
+  The worst-case scenario: API is unreachable AND no local cache exists.
+  The client MUST still return gracefully with an empty result set and
+  status=degraded. It MUST emit a helpful warning to stderr that includes
+  the bypass instruction (CHANGESPEC_SKIP=1 or --no-changespec).
+  It MUST NOT throw an unhandled exception. It MUST NOT crash.
+  The CLI MUST exit 0. The MCP MUST NOT return isError=true.
+  The user's workflow MUST continue.

@@ -1,0 +1,26 @@
+id: security-008
+description: affected_systems array with 10,000 items - must be rejected without hanging
+level: 3
+spec_clause: "Section 1.2, Section 12.1"
+input_type: generated
+generate:
+  type: array_overflow
+  field: affected_systems
+  item_value: "Service"
+  count: 10000
+base_input:
+  specversion: "1.0"
+  id: "cs_sec_008"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Array overflow test"
+  summary: "affected_systems has 10,000 items. Must be rejected with maxItems violation."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "affected_systems exceeds maximum of 50 items"
+  max_memory_mb: 50
+  max_time_ms: 5000
+notes: "The runner generates affected_systems with 10,000 items. The validator must reject at maxItems=50 without consuming excessive memory."

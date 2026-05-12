@@ -1,0 +1,31 @@
+id: valid-016
+description: Event with all six recommended_reviewer roles present
+level: 1
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_allreviewers_001"
+  vendor_id: "salesforce"
+  category: "data_handling"
+  severity: "high"
+  title: "Salesforce DPA: significant changes to data residency and retention"
+  summary: "Salesforce is updating its Data Processing Addendum to introduce new data residency requirements and extend retention windows for audit logs. This change affects all enterprise customers with EU data residency requirements and requires review by legal, compliance, engineering, security, procurement, and management."
+  published_at: "2026-04-10T08:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.9
+  effective_date: "2026-07-01"
+  source_url: "https://www.salesforce.com/content/dam/web/en_us/www/documents/legal/Agreements/data-processing-addendum.pdf"
+  action_required: true
+  recommended_reviewers:
+    - "engineering"
+    - "security"
+    - "legal"
+    - "compliance"
+    - "procurement"
+    - "management"
+  tags:
+    - "dpa"
+    - "data-residency"
+    - "retention"
+expected:
+  valid: true

@@ -1,0 +1,22 @@
+id: safety-003
+description: Client handles malformed (non-JSON) response gracefully
+level: 1
+spec_clause: "integration-safety.md Section 1.1"
+category: safety
+scenario:
+  type: network_response
+  simulated_response:
+    status: 200
+    content_type: "text/html"
+    body: "<html><body>Service Unavailable</body></html>"
+expected:
+  client_exits_nonzero: false
+  mcp_is_error: false
+  result_status: degraded
+  stderr_contains: "degraded"
+  stdout_clean: true
+notes: >
+  A 200 with an HTML body (common for load balancer error pages, CDN
+  errors, or misconfigured proxies) MUST be treated as a failed response.
+  The client MUST NOT crash on a JSON parse error. It MUST fall back to
+  cache and continue.

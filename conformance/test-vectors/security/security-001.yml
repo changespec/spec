@@ -1,0 +1,25 @@
+id: security-001
+description: Title field with 100,000 characters - must be rejected without excessive memory use
+level: 3
+spec_clause: "Section 12.1, Section 12.11"
+input_type: generated
+generate:
+  type: oversized_field
+  field: title
+  size_bytes: 100000
+base_input:
+  specversion: "1.0"
+  id: "cs_sec_001"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "placeholder"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "title exceeds maximum length of 200 characters"
+  max_memory_mb: 50
+  max_time_ms: 5000
+notes: "The runner generates the input by filling the title field with 100,000 'A' characters. The validator must reject it via maxLength: 200. The validator must not consume more than 50MB of memory or take more than 5 seconds processing this input."

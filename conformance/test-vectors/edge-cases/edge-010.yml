@@ -1,0 +1,68 @@
+id: edge-010
+description: All optional fields populated simultaneously
+level: 2
+spec_clause: "Section 1.2"
+input:
+  specversion: "1.0"
+  id: "cs_edge_010"
+  vendor_id: "npm:express"
+  category: "security"
+  severity: "critical"
+  title: "CVE-2026-10010: All optional fields present"
+  summary: "This event tests that a fully-populated event with all optional fields is accepted. All optional fields are set to valid values."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "publisher_verified"
+  confidence_score: 1.0
+  effective_date: "2026-04-10"
+  source_url: "https://example.com/changelog"
+  affected_versions: ">=4.0.0 <4.21.3"
+  fixed_in_version: "4.21.3"
+  migration_hint: "Upgrade to express 4.21.3 immediately."
+  migration_url: "https://example.com/migration"
+  sunset_date: "2027-01-01"
+  cve_id: "CVE-2026-10010"
+  cvss_score: 9.8
+  cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+  affected_systems:
+    - "Core API"
+    - "Static Middleware"
+  affected_sections:
+    - "Middleware Documentation"
+  action_required: true
+  recommended_reviewers:
+    - "security"
+    - "engineering"
+  tags:
+    - "security"
+    - "rce"
+    - "patch-now"
+  signature:
+    alg: "ed25519"
+    key_id: "express-2026-01"
+    value: "MEQCIBnQ3x2R4xVz7kLmP9wYdFqJ1T2uHsG8eNvXcAoBpZkDAiBeKlW5mT3rYhN6pVs4cUq2wMxE9fDjLiR0vSnOgAtQ"
+    signed_fields:
+      - "specversion"
+      - "id"
+      - "vendor_id"
+      - "category"
+      - "severity"
+      - "title"
+      - "summary"
+      - "published_at"
+      - "source_type"
+      - "signature.alg"
+      - "signature.key_id"
+      - "signature.signed_fields"
+      - "source_url"
+      - "migration_url"
+      - "action_required"
+      - "affected_versions"
+      - "cve_id"
+      - "cvss_score"
+      - "cvss_vector"
+      - "fixed_in_version"
+      - "sunset_date"
+  "ext:compliance.requires_patch_review": true
+  "ext:internal.ticket_id": "SEC-1234"
+expected:
+  valid: true

@@ -1,0 +1,26 @@
+id: valid-013
+description: Namespaced vendor_id using go namespace with module path
+level: 1
+spec_clause: "Section 3.2"
+input:
+  specversion: "1.0"
+  id: "cs_go_event_001"
+  vendor_id: "go:golang.org/x/net"
+  category: "security"
+  severity: "high"
+  title: "CVE-2026-20000: HTTP/2 HPACK header decompression denial of service"
+  summary: "golang.org/x/net versions before v0.24.0 contain an HPACK header decompression vulnerability that can cause a server to allocate excessive memory when processing crafted HTTP/2 requests. Update to v0.24.0 or later."
+  published_at: "2026-04-11T14:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.98
+  affected_versions: "<0.24.0"
+  fixed_in_version: "0.24.0"
+  cve_id: "CVE-2026-20000"
+  cvss_score: 7.5
+  cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+  action_required: true
+  recommended_reviewers:
+    - "security"
+    - "engineering"
+expected:
+  valid: true

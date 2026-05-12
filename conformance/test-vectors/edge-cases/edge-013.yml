@@ -1,0 +1,17 @@
+id: edge-013
+description: Summary containing multibyte Unicode characters within 2000 byte limit
+level: 2
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_edge_013"
+  vendor_id: "unicode-test"
+  category: "informational"
+  severity: "informational"
+  title: "Unicode content in summary"
+  summary: "This summary contains multibyte Unicode characters: Chinese (中文), Japanese (日本語), Korean (한국어), Arabic (العربية), Hindi (हिंदी), Russian (Русский), Greek (Ελληνικά), Thai (ภาษาไทย). Length validation must count characters or UTF-8 bytes consistently."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: true
+notes: "The schema defines maxLength in characters. Implementations must handle multibyte characters correctly. This summary is well under 2000 characters."

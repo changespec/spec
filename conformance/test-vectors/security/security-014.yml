@@ -1,0 +1,10 @@
+id: security-014
+description: JSON null at top level
+level: 3
+spec_clause: "Section 12.1"
+input_type: json_string
+input_json: "null"
+expected:
+  valid: false
+  reason: "Input must be a JSON object, not null"
+  no_crash: true

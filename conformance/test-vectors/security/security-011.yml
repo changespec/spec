@@ -1,0 +1,11 @@
+id: security-011
+description: Not JSON at all - plain text input
+level: 3
+spec_clause: "Section 12.1"
+input_type: raw_bytes
+raw_input: "This is not JSON at all. It is plain text."
+expected:
+  valid: false
+  error_type: "json_parse_error"
+  no_crash: true
+notes: "The input is not JSON. The validator must return a JSON parse error, not crash. The error must be distinct from a schema validation error."

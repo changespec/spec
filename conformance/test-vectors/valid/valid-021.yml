@@ -1,0 +1,17 @@
+id: valid-021
+description: Event with RFC 3339 datetime with positive timezone offset
+level: 1
+spec_clause: "Section 1.1, Appendix C (RFC 3339)"
+input:
+  specversion: "1.0"
+  id: "cs_tz_plus_001"
+  vendor_id: "stripe"
+  category: "informational"
+  severity: "informational"
+  title: "Stripe API changelog published"
+  summary: "Stripe published the April 2026 API changelog. No breaking changes in this release."
+  published_at: "2026-04-10T16:00:00+02:00"
+  source_type: "publisher_verified"
+  confidence_score: 1.0
+expected:
+  valid: true

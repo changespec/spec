@@ -1,0 +1,17 @@
+id: edge-006
+description: id at exactly 128 character boundary (maximum)
+level: 2
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "ID at maximum length"
+  summary: "The id field is exactly 128 characters. Must be accepted."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: true
+notes: "id is exactly 128 characters. 129 characters is rejected as tested in invalid-019."

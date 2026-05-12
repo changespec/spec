@@ -1,0 +1,18 @@
+{
+  "name": "@changespec/conformance-runner-typescript",
+  "version": "1.0.0",
+  "description": "ChangeSpec conformance runner for TypeScript",
+  "private": true,
+  "scripts": {
+    "run": "ts-node runner.ts"
+  },
+  "dependencies": {
+    "@changespec/changespec": "file:../../../reference/typescript",
+    "yaml": "2.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.17",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.3"
+  }
+}

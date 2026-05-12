@@ -1,0 +1,17 @@
+id: invalid-010
+description: Wrong specversion - numeric 1 instead of string "1.0"
+level: 1
+spec_clause: "Section 1.1"
+input:
+  specversion: 1
+  id: "cs_test_010"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "specversion must be string '1.0', not a number"

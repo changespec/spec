@@ -1,0 +1,18 @@
+id: valid-022
+description: Event with RFC 3339 datetime with negative timezone offset
+level: 1
+spec_clause: "Section 1.1, Appendix C (RFC 3339)"
+input:
+  specversion: "1.0"
+  id: "cs_tz_minus_001"
+  vendor_id: "github"
+  category: "informational"
+  severity: "informational"
+  title: "GitHub Actions: Ubuntu 22.04 runner deprecation notice"
+  summary: "GitHub Actions will deprecate the ubuntu-22.04 runner label on 2027-04-01. Users should migrate to ubuntu-24.04 before that date."
+  published_at: "2026-04-10T09:00:00-05:00"
+  source_type: "crawled"
+  confidence_score: 0.95
+  sunset_date: "2027-04-01"
+expected:
+  valid: true

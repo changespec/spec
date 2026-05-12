@@ -1,0 +1,21 @@
+id: safety-001
+description: Client handles HTTP 500 response from the ChangeSpec API gracefully
+level: 1
+spec_clause: "integration-safety.md Section 1.1"
+category: safety
+scenario:
+  type: network_response
+  simulated_response:
+    status: 500
+    body: '{"error": "Internal Server Error"}'
+expected:
+  client_exits_nonzero: false
+  mcp_is_error: false
+  result_status: degraded
+  result_has_events: true    # events come from local cache
+  stderr_contains: "degraded"
+  stdout_clean: true          # no error on stdout
+notes: >
+  A 500 from our API is our problem, not the user's problem.
+  The client MUST serve cached data and warn on stderr.
+  The CLI MUST exit 0. The MCP server MUST NOT set isError=true.

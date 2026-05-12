@@ -1,0 +1,17 @@
+id: invalid-015
+description: Invalid source_type value - 'ai_generated' is not defined
+level: 1
+spec_clause: "Section 6"
+input:
+  specversion: "1.0"
+  id: "cs_test_015"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test change"
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "ai_generated"
+expected:
+  valid: false
+  reason: "Invalid source_type value: 'ai_generated' is not defined. Valid values: publisher_verified, crawled, community"

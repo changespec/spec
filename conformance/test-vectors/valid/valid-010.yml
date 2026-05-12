@@ -1,0 +1,22 @@
+id: valid-010
+description: Namespaced vendor_id using npm namespace
+level: 1
+spec_clause: "Section 3.2"
+input:
+  specversion: "1.0"
+  id: "cs_npm_event_001"
+  vendor_id: "npm:lodash"
+  category: "api_breaking"
+  severity: "high"
+  title: "lodash 5.0.0: _.clone no longer deep clones by default"
+  summary: "lodash 5.0.0 changes the behavior of _.clone to perform a shallow clone by default. Code relying on deep clone behavior must migrate to _.cloneDeep explicitly. This affects all projects using lodash >= 5.0.0."
+  published_at: "2026-04-08T11:00:00Z"
+  source_type: "crawled"
+  confidence_score: 0.91
+  affected_versions: ">=5.0.0"
+  migration_hint: "Replace _.clone(obj) with _.cloneDeep(obj) wherever deep cloning was expected."
+  action_required: true
+  recommended_reviewers:
+    - "engineering"
+expected:
+  valid: true

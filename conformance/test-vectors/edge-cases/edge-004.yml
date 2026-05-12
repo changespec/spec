@@ -1,0 +1,17 @@
+id: edge-004
+description: confidence_score at exact maximum boundary 1.0
+level: 2
+spec_clause: "Section 6.1"
+input:
+  specversion: "1.0"
+  id: "cs_edge_004"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Confidence at maximum"
+  summary: "Confidence score is exactly 1.0. This is the maximum allowed value and expected for publisher_verified events."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "publisher_verified"
+  confidence_score: 1.0
+expected:
+  valid: true

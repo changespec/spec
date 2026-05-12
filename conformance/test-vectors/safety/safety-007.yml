@@ -1,0 +1,27 @@
+id: safety-007
+description: Client circuit-breaks after repeated failures and stops retrying
+level: 2
+spec_clause: "integration-safety.md Section 3"
+category: safety
+scenario:
+  type: repeated_failures
+  failure_sequence:
+    - type: network_timeout
+    - type: http_500
+    - type: network_timeout
+  # After 3 failures, circuit must open.
+  # Fourth call must NOT hit the network.
+  fourth_call_network_monitor: true
+  circuit_breaker_threshold: 3
+expected:
+  circuit_state_after_threshold: "open"
+  fourth_call_network_calls_made: 0
+  fourth_call_result_status: degraded
+  client_exits_nonzero: false
+  stderr_contains_circuit: true   # warning about circuit opening
+notes: >
+  After the configured failure threshold is reached (default 3), the
+  circuit MUST open. Subsequent calls MUST NOT hit the network - they
+  MUST return the fallback immediately. The circuit MUST log a warning
+  to stderr when it opens. The CLI MUST still exit 0. The client MUST
+  NOT retry-storm the API during an outage.

@@ -1,0 +1,19 @@
+id: valid-030
+description: "Event with unknown non-extension field (schema rejects; ext: prefix required for extension fields)"
+level: 1
+spec_clause: "Section 10, Section 11.2"
+input:
+  specversion: "1.0"
+  id: "cs_futurecompat_001"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: "Test event with unknown field"
+  summary: "This event contains a field not in the 1.0 spec without the required ext: prefix."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+  some_future_field_from_v11: "consumers must ignore this"
+expected:
+  valid: false
+  reason: "Unknown non-extension fields must use the ext: prefix per Section 10. The schema enforces additionalProperties: false. This field should be named ext:some_future_field_from_v11 to be accepted."
+notes: "Section 11.2 (consumers MUST ignore unknown fields) applies at runtime processing, not at producer schema validation. Producers must use ext: prefixed fields for all non-standard extensions. Schema validation rejects unknown non-ext fields."

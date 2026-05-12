@@ -1,0 +1,14 @@
+id: security-013
+description: JSON array at top level instead of object
+level: 3
+spec_clause: "Section 12.1"
+input_type: json_string
+input_json: |
+  [
+    {"specversion": "1.0", "id": "cs_sec_013"}
+  ]
+expected:
+  valid: false
+  reason: "Input must be a JSON object, not an array"
+  no_crash: true
+notes: "A ChangeSpec event is always a JSON object. An array at the top level is invalid. Must return an error without crashing."

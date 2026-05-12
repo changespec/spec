@@ -1,0 +1,21 @@
+id: security-007
+description: NUL byte in summary field
+level: 3
+spec_clause: "Section 12.1"
+input_type: json_string
+input_json: |
+  {
+    "specversion": "1.0",
+    "id": "cs_sec_007",
+    "vendor_id": "acme",
+    "category": "informational",
+    "severity": "informational",
+    "title": "NUL byte test",
+    "summary": "Summary with a NUL byte: \u0000 end.",
+    "published_at": "2026-04-10T14:00:00Z",
+    "source_type": "crawled"
+  }
+expected:
+  valid: true
+  no_crash: true
+notes: "NUL bytes (U+0000) are valid JSON string characters. The validator must not crash. Implementations may choose to reject NUL bytes in string fields as a security hardening measure, but the schema does not prohibit them. This vector expects valid:true unless the implementation explicitly rejects NUL bytes."

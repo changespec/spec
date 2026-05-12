@@ -1,0 +1,17 @@
+id: invalid-039
+description: Empty string for required field title
+level: 1
+spec_clause: "Section 1.1"
+input:
+  specversion: "1.0"
+  id: "cs_test_039"
+  vendor_id: "acme"
+  category: "informational"
+  severity: "informational"
+  title: ""
+  summary: "A test change."
+  published_at: "2026-04-10T14:00:00Z"
+  source_type: "crawled"
+expected:
+  valid: false
+  reason: "title must have minimum length of 1"
