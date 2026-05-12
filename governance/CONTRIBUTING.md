@@ -65,7 +65,7 @@ Each has its own CONTRIBUTING.md. All reference implementation contributions mus
 
 ## Code of conduct
 
-All contributors are expected to follow the Code of Conduct (CODE_OF_CONDUCT.md). Violations should be reported to conduct@changespec.org.
+All contributors are expected to follow the Code of Conduct (CODE_OF_CONDUCT.md). Violations should be reported via GitHub Issues at https://github.com/changespec/spec/issues using the label `conduct`.
 
 ## Intellectual property
 
@@ -77,5 +77,5 @@ If your contribution includes material that is the property of your employer, yo
 
 - GitHub Issues: https://github.com/changespec/spec/issues
 - GitHub Discussions: https://github.com/changespec/spec/discussions
-- General inquiries: standards@changespec.org
-- Security issues: security@changespec.org (do not file security issues as public GitHub issues)
+- General inquiries: https://github.com/changespec/spec/discussions
+- Security issues: https://github.com/changespec/spec/security/advisories/new (do not file security issues as public GitHub issues)

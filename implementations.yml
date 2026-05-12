@@ -1,0 +1,14 @@
+# ChangeSpec implementations registry
+# Submit a pull request to add your implementation.
+#
+# Required fields: name, language, type, url
+# type: validator | producer | consumer | mcp-server
+#
+# Example:
+# - name: My ChangeSpec Tool
+#   language: Go
+#   type: validator
+#   url: https://github.com/example/my-changespec-tool
+#   notes: Optional short description
+
+implementations: []
